@@ -1,0 +1,27 @@
+.a {
+	height: fitContent;
+	box-shadow: '0px 0px 4px 1px rgba(137, 169, 192, 0.25)';
+	border-radius: 15px;
+	padding: 15px;
+	margin: 15px;
+}
+
+.small {
+	margin: 5px;
+	padding: 5px;
+}
+.top-left {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.center-center {
+	display: center;
+	align-items: center;
+	justify-content: center;
+}
+.bottom-center {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}

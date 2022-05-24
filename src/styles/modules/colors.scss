@@ -1,0 +1,64 @@
+$baltic: #2a2532;
+$bastille: #272131;
+$darkBastille: #211d27;
+$black: #18141e;
+$iron: #dcdcdd;
+$bombay: #aeb1bc;
+$clearGray: #9b999e;
+$lightGray: #59565d;
+$shipGray: #3d3942;
+$gray: #424242;
+$darkGray: #353239;
+$white: #ffffff;
+$yellow: #ffd426;
+$orange: #ff8126;
+$lemon: #abad1f;
+$lightGreen: #33cb59;
+$emerald: #30c054;
+$green: #06a215;
+$grassy: #476737;
+$greenGradient: linear-gradient(180deg, #08968e 0%, #0d7770 100%);
+$blue: #409cff;
+$lightBlue: #40f4ff;
+$blueGradient: linear-gradient(180deg, #409cff 0%, #0f83ff 100%);
+$pink: #ff6482;
+$peach: #ff6961;
+$purple: #ef6bd2;
+$cherry: #a2063e;
+$cherryGradient: linear-gradient(180deg, #9608664d 0%, #770d544d 100%);
+$violet: #372b4a;
+$darkViolet: #393243;
+$violetGradient: linear-gradient(180deg, #58496e 0%, #493d5c 100%);
+$grayGradient: linear-gradient(180deg, #a7a7aa 0%, #dbdbdc 100%);
+
+$colors: (
+	"transparent": "transparent",
+	"black": $black,
+	"white": $white,
+	"baltic": $baltic,
+	"bastille": $bastille,
+	"dark-bastille": $darkBastille,
+	"iron": $iron,
+	"lightGray": $lightGray,
+	"gray": $gray,
+	"dark-gray": $darkGray,
+	"yellow": $yellow,
+	"orange": $orange,
+	"lemon": $lemon,
+	"light-green": $lightGreen,
+	"emerald": $emerald,
+	"green": $green,
+	"grassy": $grassy,
+	"green-gradient": $greenGradient,
+	"blue": $blue,
+	"light-blue": $lightBlue,
+	"bluegradient": $blueGradient,
+	"pink": $pink,
+	"peach": $peach,
+	"purple": $purple,
+	"cherry": $cherry,
+	"cherryGradient": $cherryGradient,
+	"violet": $violet,
+	"violet-gradient": $violetGradient,
+	"gray-gradient": $grayGradient,
+);

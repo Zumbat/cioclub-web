@@ -1,0 +1,12 @@
+@import "../../../../styles/index.scss";
+
+.radio-btn {
+	width: 100%;
+	display: flex;
+	padding: 5px;
+	position: relative;
+
+	span {
+		font-size: 17px;
+	}
+}

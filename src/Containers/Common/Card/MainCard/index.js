@@ -1,9 +1,13 @@
 import './style.css';
 
-import { Box, Typography } from '@material-ui/core';
+import {
+	Box, Grid, Typography
+} from '@material-ui/core';
+import moment from 'moment';
 import React from 'react';
 
 import bgMainCard from '../../../../assets/svg/bgMainCard.svg';
+import Online from '../../Tab/container/Online';
 
 export default function MainCard({
 	title, location, time, type
@@ -15,30 +19,26 @@ export default function MainCard({
 		},
 	};
 	return (
-		<Box
-			xs={12}
-			style={styles.paperContainer}
-			className="top-left a"
-			height={'200px'}
-		>
-			<Box
-				className="center-center"
-				width={'maxContent'}
-				height={'30px'}
-				padding={'5px'}
-				borderRadius={'5px'}
-				sx={{ backgroundColor: '#66F39F', color: '#202020' }}
-			>
-				{type}dfghhgfd
-			</Box>
-			<Box>
-				<Typography text={title} variant="h5" />
-				<Typography text={location} variant="h6" />
-				<Typography text={time} variant="h6" />
-			</Box>
-			<Box xs={12} className="bottom-center">
-				<Typography>Mostra di più</Typography>
-			</Box>
-		</Box>
+		<Grid container>
+			<Grid item xs={12} style={styles.paperContainer}
+				className="card">
+				<Grid item xs={2} className="center-center">
+					<Online></Online>
+				</Grid>
+				<Grid item width={'200px'} minHeight={'150px'}>
+					<Box marginBottom={2} marginLeft={1} marginTop={1}>
+						<Box sx={{ color: '#f2f2f2' }}>
+							<Typography variant="h5">{title}</Typography>
+						</Box>
+						<Box sx={{ color: '#909090' }}>
+							<Typography variant="h6">{location}</Typography>
+							<Typography variant="h6">
+								{moment(time).utc().format('YYYY-MM-DD hh:mm')}
+							</Typography>
+						</Box>
+					</Box>
+				</Grid>
+			</Grid>
+		</Grid>
 	);
 }

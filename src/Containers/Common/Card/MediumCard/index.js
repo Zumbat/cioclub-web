@@ -9,7 +9,6 @@ const MediumCard = ({
 			background:
 				'linearGradient(89.92deg, rgba(0, 0, 0, 0.92) 57.94%, #66F39F 103.75%)',
 		}}
-		padding="4px"
 		height="100px"
 		borderRadius={'15px'}
 	>

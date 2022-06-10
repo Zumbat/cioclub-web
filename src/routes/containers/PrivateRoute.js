@@ -14,9 +14,9 @@ export const PrivateRoute = ({
 	// const userHasRequiredRole =
 	// 	user && !!roles.filter(role => +role.id === +user.role_id).length;
 
-	if (!isAuthenticated) {
-		return <Navigate to={ROUTES.SIGN_IN} state={{ from: location }} />;
-	}
+	// if (!isAuthenticated) {
+	// 	return <Navigate to={ROUTES.SIGN_IN} state={{ from: location }} />;
+	// }
 
 	// if (isAuthenticated && !userHasRequiredRole) {
 	// 	return <div>Access denied</div>;

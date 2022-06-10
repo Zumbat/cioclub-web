@@ -1,15 +1,15 @@
-import {
-	Navigate, useLocation
-} from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 import { ROUTES } from '../constants';
 
 export const PublicRoute = ({
-	component: RouteComponent, isAuthenticated, restricted = false
+	component: RouteComponent,
+	isAuthenticated,
+	restricted = false,
 }) => {
 	let location = useLocation();
 
-	if (isAuthenticated && restricted) {
+	if (/* isAuthenticated && */ restricted) {
 		return <Navigate to={ROUTES.DASHBOARD} state={{ from: location }} />;
 	}
 

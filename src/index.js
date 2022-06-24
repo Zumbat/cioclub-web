@@ -5,13 +5,13 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
-import eventReducer from './features/event';
+import todoReducer from './features/todo';
 import userReducer from './features/user';
 
 export const store = configureStore({
 	reducer: {
 		user: userReducer,
-		event: eventReducer,
+		todo: todoReducer,
 	},
 });
 ReactDOM.render(

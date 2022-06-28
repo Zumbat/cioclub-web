@@ -3,30 +3,35 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import profile from "../../assets/svg/profile.svg";
-import { addTodoAsync, showTodo } from "../../features/todoSlice";
+import { addEventAsync, showEvent } from "../../features/eventSlice";
 import BasicCard from "../Common/Card/BasicCard";
 import MainCard from "../Common/Card/MainCard";
 
 function Dashboard(params) {
   const dispatch = useDispatch();
-  const todo = useSelector(showTodo);
+  const event = useSelector(showEvent);
 
   useEffect(() => {
     console.log("aa");
-    dispatch(addTodoAsync());
+    dispatch(addEventAsync());
     console.log("bbbb");
   }, []);
 
-  console.log(todo);
+  const styles = {
+    paperContainer: {
+      background: `url("https://www.fillmurray.com/640/360")`,
+    },
+  };
 
   return (
     <Grid container spacing={2} className={"center-center"}>
       <Grid item xs={7}>
-        <Box marginY={3}>
+        <Box>
           <Typography variant="h3">Dashboard</Typography>
           <Typography color="#707070">Gestisci i tuoi eventi</Typography>
         </Box>
       </Grid>
+
       <Grid item xs={1}>
         <Box>
           <IconButton aria-label="delete">
@@ -40,24 +45,29 @@ function Dashboard(params) {
             <Box sx={{ color: "black" }}>
               <Typography variant="h5">Prossimi eventi</Typography>
             </Box>
-            {/* {todo.listEventi.map((item) => {
-              return <MainCard title={item.title} />;
-            })} */}
-            <MainCard
-              title={todo.listEventi[0].nome}
-              location={todo.listEventi[0].indirizzo}
-              time={todo.listEventi[0].data}
-              key={todo.listEventi[0].idEvento}
-            />
+            <Box
+              sx={{
+                borderRadius: "15px",
+                boxShadow: "rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;",
+              }}
+              style={styles.paperContainer}
+            >
+              <MainCard
+                title={event.listEventi[0].nome}
+                location={event.listEventi[0].indirizzo}
+                time={event.listEventi[0].data}
+                key={event.listEventi[0].idEvento}
+              />
+            </Box>
           </Grid>
           <Grid item xs={12}>
             <Grid container spacing={2}>
-              {todo.listEventi.slice(1).map((item, key) => (
+              {event.listEventi.slice(1).map((item, key) => (
                 <BasicCard
                   title={item.nome}
                   location={item.indirizzo}
                   time={item.data}
-                  key={item.idEvento}
+                  key={key}
                 />
               ))}
             </Grid>
@@ -72,41 +82,3 @@ function Dashboard(params) {
 }
 
 export default Dashboard;
-
-// import { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-
-// import {
-// 	addTodoAsync, getTodoAsync, showTodo
-// } from '../../features/event';
-
-// export default function Dashboard() {
-// 	const todo = useSelector(showTodo);
-// 	const dispatch = useDispatch();
-// 	const [newTodo, setNewTodo] = useState({
-// 		userId: 69,
-// 		id: 69,
-// 		title: '',
-// 		completed: false,
-// 	});
-
-// 	const addNewTodo = () => {
-// 		dispatch(addTodoAsync(newTodo));
-// 	};
-
-// 	return (
-// 		<div className="App">
-// 			<h1>Hello CodeSandbox</h1>
-// 			<h2>Start editing to see some magic happen!</h2>
-// 			<input
-// 				onChange={e => setNewTodo({ ...newTodo, title: e.target.value })}
-// 			/>
-// 			<button onClick={addNewTodo}>Add new todo</button>
-
-// 			{todo.map(item => (
-// 				<p key={item.id}>{item.title}</p>
-// 			))}
-// 			<button onClick={() => dispatch(getTodoAsync('2'))}>GET TODO</button>
-// 		</div>
-// 	);
-// }

@@ -1,8 +1,8 @@
-// export const ROUTES = {
-// 	DASHBOARD: '/',
-// 	LOGOUT: '/logout',
-// 	SIGN_IN: '/login',
-// };
+export const ROUTES = {
+  DASHBOARD: "/",
+  REGISTRATION: "/registration",
+  SIGN_IN: "/login",
+};
 
 // export const ROLES = {
 // 	ADMIN: {

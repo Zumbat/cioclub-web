@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todoSlide from "../features/todoSlice";
+import eventSlice from "../features/eventSlice";
 
 export default configureStore({
   reducer: {
-    todo: todoSlide
-  }
+    event: eventSlice,
+  },
 });

@@ -13,7 +13,7 @@ function Dashboard(params) {
 
   useEffect(() => {
     console.log("aa");
-    dispatch(addEventAsync());
+    // dispatch(addEventAsync());
     console.log("bbbb");
   }, []);
 

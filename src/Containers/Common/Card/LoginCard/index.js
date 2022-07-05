@@ -44,9 +44,9 @@ export default function LoginCard({ title, location, time, type }) {
     dispatch(loginAsync(values));
   };
 
-  useEffect(() => {
-    dispatch(loginAsync);
-  }, []);
+  // useEffect(() => {
+  //   dispatch(loginAsync);
+  // }, []);
 
   return (
     <Grid item xs={8} className={" card"}>

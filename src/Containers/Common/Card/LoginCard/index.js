@@ -13,9 +13,10 @@ import {
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import IconButton from "@mui/material/IconButton";
-import { useDispatch } from "react-redux";
-import { loginAsync } from "../../../../features/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { loginAsync, getAuth } from "../../../../features/userSlice";
 
+import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import "./login.css";
 import "../../Card/style.css";
@@ -25,10 +26,12 @@ export default function LoginCard({ title, location, time, type }) {
     email: "",
     password: "",
   });
+  let navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
+  const isAuthenticated = localStorage.getItem("token");
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -42,11 +45,23 @@ export default function LoginCard({ title, location, time, type }) {
 
   const newLogin = () => {
     dispatch(loginAsync(values));
+
+    if (isAuthenticated !== null) {
+      navigate({
+        pathname: "../",
+      });
+    }
   };
 
-  // useEffect(() => {
-  //   dispatch(loginAsync);
-  // }, []);
+  useEffect(() => {
+    if (isAuthenticated !== null) {
+      navigate({
+        pathname: "../",
+      });
+    }
+    console.log(isAuthenticated, "bbaaa");
+    // dispatch(loginAsync);
+  }, [isAuthenticated]);
 
   return (
     <Grid item xs={8} className={" card"}>

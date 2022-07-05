@@ -15,7 +15,8 @@ import { PrivateRoute } from "./routes/PrivateRoute";
 const App = (props) => {
   // const { isLoading } = useAuth();
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector(getAuth);
+  const isAuthenticated = localStorage.getItem("token");
+  // const isAuthenticated = useSelector(getAuth);
   // const isAuthenticated = useSelector(selectors.getAuth());
 
   useEffect(() => {

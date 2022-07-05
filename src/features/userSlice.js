@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+// import { useNavigate } from "react-router-dom";
 import api from "../API";
 
 const initialState = {
   value: {
     name: "",
     email: "",
-    isLogin: false,
   },
 };
 
@@ -29,10 +29,11 @@ const userSlice = createSlice({
 
 export const loginAsync = (value) => async (dispatch) => {
   try {
-    console.log(value);
     const response = await api.post("/utenti/logIn", value);
-    console.log(response);
-    dispatch(login(response.value));
+    localStorage.setItem("token", JSON.stringify(response.data.token));
+
+    dispatch(login(value));
+    console.log("aaaa", response);
   } catch (err) {
     throw new Error(err);
   }
@@ -50,7 +51,6 @@ export const registrationAsync = (value) => async (dispatch) => {
 };
 
 // export const logoutAsync = value;
+export const { login, saveToken, isLogged } = userSlice.actions;
 
-export const { login } = userSlice.actions;
-export const getAuth = (state) => state.user.initialState.value.isLogin;
 export default userSlice.reducer;

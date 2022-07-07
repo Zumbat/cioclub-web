@@ -31,7 +31,7 @@ export default function LoginCard({ title, location, time, type }) {
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
-  const isAuthenticated = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -45,23 +45,16 @@ export default function LoginCard({ title, location, time, type }) {
 
   const newLogin = () => {
     dispatch(loginAsync(values));
-
-    if (isAuthenticated !== null) {
-      navigate({
-        pathname: "../",
-      });
-    }
+    navigate({
+      pathname: "../",
+    });
   };
 
-  useEffect(() => {
-    if (isAuthenticated !== null) {
-      navigate({
-        pathname: "../",
-      });
-    }
-    console.log(isAuthenticated, "bbaaa");
-    // dispatch(loginAsync);
-  }, [isAuthenticated]);
+  const handleCreate = () => {
+    navigate({
+      pathname: "../registration",
+    });
+  };
 
   return (
     <Grid item xs={8} className={" card"}>
@@ -123,7 +116,7 @@ export default function LoginCard({ title, location, time, type }) {
         </Button>
       </Box>
       <Typography variant={"body1"}>
-        Non hai un account? Creane uno qui.
+        Non hai un account? Creane uno <u onClick={handleCreate}>qui</u>.
       </Typography>
     </Grid>
   );

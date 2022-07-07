@@ -10,7 +10,7 @@ import Online from "../../Tab/container/Online";
 export default function BasicCard({ title, location, time, bgImg, type }) {
   const [isIscritto, setIsIscritto] = useState();
   return (
-    <Grid item md={4} xs={12}>
+    <Grid item md={4} xs={6}>
       <Box className={"card"} display={"flex"} alignItems={"space-between"}>
         <Grid container>
           <Grid item xs={5}>

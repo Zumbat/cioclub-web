@@ -4,12 +4,12 @@ import { ROUTES } from "../constants";
 
 export const PublicRoute = ({
   component: RouteComponent,
-  isAuthenticated,
+  token,
   restricted = false,
 }) => {
   let location = useLocation();
 
-  if (isAuthenticated && restricted) {
+  if (token && restricted) {
     return <Navigate to={ROUTES.HOME} state={{ from: location }} />;
   }
 

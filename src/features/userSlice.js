@@ -7,6 +7,14 @@ const initialState = {
     name: "",
     email: "",
   },
+  data: {
+    nome: "",
+    cognome: "",
+    email: "",
+    pwd: "",
+    dataNascita: "",
+    descrizione: "",
+  },
 };
 
 const userSlice = createSlice({
@@ -19,9 +27,9 @@ const userSlice = createSlice({
       state.value = action.payload;
     },
     registration: (state, action) => {
-      state.value = action.payload;
+      state.data = action.payload;
     },
-    logout: (state) => {
+    deleteUser: (state) => {
       state.value = initialState;
     },
   },
@@ -44,13 +52,14 @@ export const registrationAsync = (value) => async (dispatch) => {
     console.log(value);
     const response = await api.post("/signUp", value);
     console.log(response);
-    dispatch(registration(response.value));
+    // if (response.status === 200) {
+    dispatch(registration(value.utente));
+    // }
   } catch (err) {
     throw new Error(err);
   }
 };
 
-// export const logoutAsync = value;
-export const { login, saveToken, isLogged } = userSlice.actions;
+export const { login, registration } = userSlice.actions;
 
 export default userSlice.reducer;

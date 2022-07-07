@@ -1,6 +1,9 @@
 import { Box, Grid, IconButton, Typography } from "@material-ui/core";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 import profile from "../../assets/svg/profile.svg";
 import { getEventAsync, showEvent } from "../../features/eventSlice";
@@ -14,6 +17,25 @@ import MediumCard from "../Common/Card/MediumCard";
 
 function Dashboard(params) {
   const dispatch = useDispatch();
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  let navigate = useNavigate();
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate({
+      pathname: "../login",
+    });
+  };
+  const handleDeleteAccount = () => {
+    dispatch();
+  };
 
   const event = useSelector(showEvent);
   const partecipazioni = useSelector(showPartecipazioni);
@@ -40,9 +62,23 @@ function Dashboard(params) {
 
       <Grid item xs={1}>
         <Box>
-          <IconButton aria-label="delete">
+          <IconButton aria-label="delete" onClick={handleClick}>
             <img src={profile} alt="profile" />
           </IconButton>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            {/* <MenuItem onClick={handleDeleteAccount}>
+              <Typography color={"error"}>Elimina il mio account</Typography>
+            </MenuItem> */}
+          </Menu>
         </Box>
       </Grid>
       <Grid item xs={8}>

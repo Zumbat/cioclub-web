@@ -15,12 +15,10 @@ import { PrivateRoute } from "./routes/PrivateRoute";
 const App = (props) => {
   // const { isLoading } = useAuth();
   const dispatch = useDispatch();
-  const isAuthenticated = localStorage.getItem("token");
-  // const isAuthenticated = useSelector(getAuth);
-  // const isAuthenticated = useSelector(selectors.getAuth());
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    console.log("is", isAuthenticated);
+    console.log("is", token);
   }, []);
 
   return (
@@ -39,7 +37,7 @@ const App = (props) => {
 
         {/* <Route
           path={ROUTES.DASHBOARD}
-          element={<Dashboard isAuthenticated={isAuthenticated} />}
+          element={<Dashboard token={token} />}
         /> */}
         {/* <Route
 							path={ROUTES.TOURNAMENTS}
@@ -56,10 +54,7 @@ const App = (props) => {
         <Route
           path={ROUTES.DASHBOARD}
           element={
-            <PrivateRoute
-              component={() => <Dashboard />}
-              isAuthenticated={isAuthenticated}
-            />
+            <PrivateRoute component={() => <Dashboard />} token={token} />
           }
         />
         <Route path="*" element={<Navigate to={ROUTES.DASHBOARD} />} />

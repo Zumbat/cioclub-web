@@ -21,11 +21,13 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { useDispatch } from "react-redux";
 import { registrationAsync } from "../../../../features/userSlice";
 
+import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import "./registration.css";
 import "../../Card/style.css";
 
 export default function RegistrationCard({ title, location, time, type }) {
+  let navigate = useNavigate();
   const [values, setValues] = useState({
     utente: {
       nome: "",
@@ -37,6 +39,11 @@ export default function RegistrationCard({ title, location, time, type }) {
     },
   });
   const [showPassword, setShowPassword] = useState(false);
+  const handleLogin = () => {
+    navigate({
+      pathname: "../login",
+    });
+  };
   const handleChange = (fields) => (event) => {
     if (fields != "dataNascita") {
       setValues((prevState) => ({
@@ -70,6 +77,9 @@ export default function RegistrationCard({ title, location, time, type }) {
 
   const newRegistration = () => {
     dispatch(registrationAsync(values));
+    navigate({
+      pathname: "../login",
+    });
   };
 
   useEffect(() => {
@@ -77,7 +87,7 @@ export default function RegistrationCard({ title, location, time, type }) {
   }, []);
 
   return (
-    <Grid item xs={8} className={" card"}>
+    <Grid item xs={8} className={"card"}>
       {/* <Box>
           <img src="" alt="Login" />
         </Box> */}
@@ -179,7 +189,13 @@ export default function RegistrationCard({ title, location, time, type }) {
           Registrati
         </Button>
       </Box>
-      <Typography variant={"body1"}>Hai già un account? Accedi qui.</Typography>
+      <Typography variant={"body1"}>
+        Hai già un account? Accedi{" "}
+        <u style={{ color: "ButtonText" }} onClick={handleLogin}>
+          qui
+        </u>
+        .
+      </Typography>
     </Grid>
   );
 }

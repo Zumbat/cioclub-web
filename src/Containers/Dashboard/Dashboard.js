@@ -3,18 +3,24 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import profile from "../../assets/svg/profile.svg";
-import { addEventAsync, showEvent } from "../../features/eventSlice";
+import { getEventAsync, showEvent } from "../../features/eventSlice";
+import {
+  getPartecipazioniAsync,
+  showPartecipazioni,
+} from "../../features/partecipazioniSlice";
 import BasicCard from "../Common/Card/BasicCard";
 import MainCard from "../Common/Card/MainCard";
+import MediumCard from "../Common/Card/MediumCard";
 
 function Dashboard(params) {
   const dispatch = useDispatch();
+
   const event = useSelector(showEvent);
+  const partecipazioni = useSelector(showPartecipazioni);
 
   useEffect(() => {
-    console.log("aa");
-    // dispatch(addEventAsync());
-    console.log("bbbb");
+    dispatch(getEventAsync());
+    dispatch(getPartecipazioniAsync());
   }, []);
 
   const styles = {
@@ -40,8 +46,8 @@ function Dashboard(params) {
         </Box>
       </Grid>
       <Grid item xs={8}>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
+        <Grid container spacing={2} sx={{ position: "relative", zIndex: "1" }}>
+          <Grid item xs={12} sx={{ position: "relative", zIndex: "1" }}>
             <Box sx={{ color: "black" }}>
               <Typography variant="h5">Prossimi eventi</Typography>
             </Box>
@@ -49,6 +55,7 @@ function Dashboard(params) {
               sx={{
                 borderRadius: "15px",
                 boxShadow: "rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;",
+                zIndex: "1",
               }}
               style={styles.paperContainer}
             >
@@ -60,10 +67,33 @@ function Dashboard(params) {
               />
             </Box>
           </Grid>
-          <Grid item xs={12}>
-            <Grid container spacing={2}>
+          <Grid item xs={12} sx={{ position: "relative", zIndex: "5" }}>
+            <Grid
+              container
+              spacing={2}
+              sx={{ position: "relative", zIndex: "5" }}
+            >
               {event.listEventi.slice(1).map((item, key) => (
                 <BasicCard
+                  title={item.nome}
+                  location={item.indirizzo}
+                  time={item.data}
+                  key={key}
+                />
+              ))}
+            </Grid>
+          </Grid>
+          <Grid item xs={12} sx={{ position: "relative", zIndex: "10" }}>
+            <Grid
+              container
+              spacing={2}
+              sx={{ position: "relative", zIndex: "10" }}
+            >
+              <Grid item xs={12}>
+                <Typography variant={"h5"}>Partecipazioni</Typography>
+              </Grid>
+              {partecipazioni.listEventi.map((item, key) => (
+                <MediumCard
                   title={item.nome}
                   location={item.indirizzo}
                   time={item.data}

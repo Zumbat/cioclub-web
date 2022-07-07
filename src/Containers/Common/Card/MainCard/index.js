@@ -16,7 +16,13 @@ export default function MainCard({ title, location, time, type }) {
   };
 
   return (
-    <Grid item xs={12} style={stylesBG.paperContainer} className={"card-main"}>
+    <Grid
+      item
+      xs={12}
+      style={stylesBG.paperContainer}
+      className={"card-main"}
+      sx={{ zIndex: "-1" }}
+    >
       <Grid item xs={2} className="center-center">
         <Online></Online>
       </Grid>

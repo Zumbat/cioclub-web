@@ -12,17 +12,15 @@ export default function BasicCard({ title, location, time, bgImg, type }) {
   return (
     <Grid item md={4} xs={12}>
       <Box className={"card"} display={"flex"} alignItems={"space-between"}>
-        <Grid container spacing={2}>
+        <Grid container>
           <Grid item xs={5}>
             <Online></Online>
           </Grid>
           <Grid item xs={3}></Grid>
           <Grid item xs={3} display={"flex"} justifyContent={"flex-end"}>
-            {isIscritto ? (
-              <Button>Iscritto</Button>
-            ) : (
-              <Button>Iscriviti</Button>
-            )}
+            <Button onClick={() => setIsIscritto(!isIscritto)}>
+              {isIscritto ? "Iscritto" : "Iscriviti"}
+            </Button>
           </Grid>
           <Grid item xs={12}>
             <Grid container>

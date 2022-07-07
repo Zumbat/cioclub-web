@@ -3,7 +3,7 @@
 	color: white;
 }
 .card {
-	
+	background-color: white;
 	min-height: 150px;
 	height: fitContent;
 	box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
@@ -13,7 +13,7 @@
 	
 }
 .card-main{
-
+background-color: white;
 	min-height: 220px;
 	height: fitContent;
 	box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;

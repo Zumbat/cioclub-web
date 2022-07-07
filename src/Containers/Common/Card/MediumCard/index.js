@@ -1,31 +1,53 @@
-// import { Box, Typography } from '@material-ui/core';
+import "../style.css";
 
-// const MediumCard = ({
-// 	title, location, time, type
-// }) => (
-// 	<Box
-// 		xs={6}
-// 		sx={{
-// 			background:
-// 				'linearGradient(89.92deg, rgba(0, 0, 0, 0.92) 57.94%, #66F39F 103.75%)',
-// 		}}
-// 		height="100px"
-// 		borderRadius={'15px'}
-// 	>
-// 		<Box
-// 			width={'50px'}
-// 			height={'10px'}
-// 			borderRadius={'3px'}
-// 			sx={{ backgroundColor: '#66F39F', color: '#202020' }}
-// 		>
-// 			{type}
-// 		</Box>
-// 		<Box>
-// 			<Typography text={title} variant="h6" />
-// 			<Typography text={location} variant="h5" />
-// 			<Typography text={time} variant="h5" />ù
-// 		</Box>
-// 	</Box>
-// );
+import { Box, Button, Grid, Typography } from "@material-ui/core";
+import moment from "moment";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
-// export default MediumCard;
+import Online from "../../Tab/container/Online";
+
+export default function MediumCard({ title, location, time, bgImg, type }) {
+  //   const [isIscritto, setIsIscritto] = useState();
+  return (
+    <Grid item md={6} xs={12}>
+      <Box className={"card"} display={"flex"} alignItems={"space-between"}>
+        <Grid container>
+          <Grid item xs={5}>
+            <Online></Online>
+          </Grid>
+          <Grid item xs={3}></Grid>
+          <Grid item xs={3} display={"flex"} justifyContent={"flex-end"}>
+            <Button>Iscritto</Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Grid container>
+              <Grid item xs={12}>
+                <Box color={"black"}>
+                  <Typography variant="h6">{title}</Typography>
+                  <Box color={"#808080"}>
+                    <Typography variant="body">{location}</Typography>
+                    <br />
+                    <Typography variant="body">
+                      {moment(time).utc().format("DD/MM/YYYY hh:mm")}
+                    </Typography>
+                  </Box>
+                </Box>
+              </Grid>
+              <Grid item xs={12}>
+                <Box
+                  display={"flex"}
+                  justifyContent={"center"}
+                  alignItems={"flex-end"}
+                  sx={{ paddingTop: "40px" }}
+                >
+                  <Typography variant="body2">Mostra di più</Typography>
+                </Box>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Box>
+    </Grid>
+  );
+}

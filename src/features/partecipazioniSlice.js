@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import api from "../API";
 
-export const eventSlice = createSlice({
-  name: "event",
+export const partecipazioniSlice = createSlice({
+  name: "partecipazioni",
   initialState: {
     data: {
       listEventi: [
@@ -23,21 +23,22 @@ export const eventSlice = createSlice({
     },
   },
   reducers: {
-    getEvent: (state, action) => {
+    getPartecipazioni: (state, action) => {
       state.data = action.payload;
     },
   },
 });
 
-export const getEventAsync = () => async (dispatch) => {
+export const getPartecipazioniAsync = () => async (dispatch) => {
   try {
-    const response = await api.get("/listEventi");
-    dispatch(getEvent(response.data));
+    const response = await api.get("/utenti/listEventi");
+
+    dispatch(getPartecipazioni(response.data));
   } catch (err) {
     throw new Error(err);
   }
 };
 
-export const { getEvent } = eventSlice.actions;
-export const showEvent = (state) => state.event.data;
-export default eventSlice.reducer;
+export const { getPartecipazioni } = partecipazioniSlice.actions;
+export const showPartecipazioni = (state) => state.partecipazioni.data;
+export default partecipazioniSlice.reducer;

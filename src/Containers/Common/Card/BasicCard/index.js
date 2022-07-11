@@ -1,5 +1,5 @@
 import "../style.css";
-
+import "../MainCard/mainCard.css";
 import { Box, Button, Grid, Typography } from "@material-ui/core";
 import moment from "moment";
 import React, { useState } from "react";
@@ -10,16 +10,16 @@ import Online from "../../Tab/container/Online";
 export default function BasicCard({ title, location, time, bgImg, type }) {
   const [isIscritto, setIsIscritto] = useState();
   return (
-    <Grid item md={4} xs={6}>
-      <Box className={"card"} display={"flex"} alignItems={"space-between"}>
-        <Grid container>
+    <Grid item md={4} xs={12}>
+      <Box className={"card"}>
+        <Grid container spacing={3}>
           <Grid item xs={5}>
             <Online></Online>
           </Grid>
           <Grid item xs={3}></Grid>
           <Grid item xs={3} display={"flex"} justifyContent={"flex-end"}>
             <Button onClick={() => setIsIscritto(!isIscritto)}>
-              {isIscritto ? "Iscritto" : "Iscriviti"}
+              {isIscritto ? "Sei iscritto" : "Iscriviti"}
             </Button>
           </Grid>
           <Grid item xs={12}>

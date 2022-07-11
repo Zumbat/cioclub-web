@@ -1,53 +1,53 @@
-@import "../../../../../styles/index.scss";
+// @import "../../../../../styles/index.scss";
 
-.options-cell {
-	background: $darkBastille;
-	color: inherit;
-	text-align: left;
-	word-break: break-word;
-	vertical-align: inherit;
+// .options-cell {
+// 	background: $darkBastille;
+// 	color: inherit;
+// 	text-align: left;
+// 	word-break: break-word;
+// 	vertical-align: inherit;
 
-	.actions__wrapper {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		padding: 10px;
+// 	.actions__wrapper {
+// 		display: flex;
+// 		justify-content: center;
+// 		align-items: center;
+// 		width: 100%;
+// 		padding: 10px;
 
-		& > button:hover:after {
-			z-index: 110;
-			position: absolute;
-			display: flex;
-			justify-content: center;
-			padding: 8px;
-			bottom: -40px;
-			background-color: #f6f7f8;
-			color: #2e3338;
-			font-size: 11px;
-			letter-spacing: 0.4px;
-			border-radius: 4px;
-		}
+// 		& > button:hover:after {
+// 			z-index: 110;
+// 			position: absolute;
+// 			display: flex;
+// 			justify-content: center;
+// 			padding: 8px;
+// 			bottom: -40px;
+// 			background-color: #f6f7f8;
+// 			color: #2e3338;
+// 			font-size: 11px;
+// 			letter-spacing: 0.4px;
+// 			border-radius: 4px;
+// 		}
 
-		& > button:first-child {
-			margin-right: 5px;
-			position: relative;
+// 		& > button:first-child {
+// 			margin-right: 5px;
+// 			position: relative;
 
-			&:hover::after {
-				content: "Options";
-				width: 50px;
-				left: 40%;
-				transform: translateX(-50%);
-			}
-		}
+// 			&:hover::after {
+// 				content: "Options";
+// 				width: 50px;
+// 				left: 40%;
+// 				transform: translateX(-50%);
+// 			}
+// 		}
 
-		& > button:nth-child(2) {
-			position: relative;
+// 		& > button:nth-child(2) {
+// 			position: relative;
 
-			&:hover::after {
-				content: "Reset options";
-				width: 80px;
-				right: 0;
-			}
-		}
-	}
-}
+// 			&:hover::after {
+// 				content: "Reset options";
+// 				width: 80px;
+// 				right: 0;
+// 			}
+// 		}
+// 	}
+// }

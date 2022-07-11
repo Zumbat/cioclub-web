@@ -104,11 +104,7 @@ function Dashboard(params) {
             </Box>
           </Grid>
           <Grid item xs={12} sx={{ position: "relative", zIndex: "5" }}>
-            <Grid
-              container
-              spacing={2}
-              sx={{ position: "relative", zIndex: "5" }}
-            >
+            <Grid container spacing={2}>
               {event.listEventi.slice(1).map((item, key) => (
                 <BasicCard
                   title={item.nome}

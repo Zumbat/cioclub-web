@@ -31,9 +31,9 @@ export const partecipazioniSlice = createSlice({
 
 export const getPartecipazioniAsync = () => async (dispatch) => {
   try {
-    const response = await api.get("/utenti/listEventi");
-
-    dispatch(getPartecipazioni(response.data));
+    // const response = await api.get("/utenti/listEventi");
+    console.log("getPartecipazioni");
+    // dispatch(getPartecipazioni(response.data));
   } catch (err) {
     throw new Error(err);
   }

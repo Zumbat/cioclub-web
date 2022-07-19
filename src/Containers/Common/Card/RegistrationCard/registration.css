@@ -1,14 +1,14 @@
 
-.card {
+.reg-card {
   border-radius: 15px;
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-  /* padding: 50px; */
+  padding: 50px;
+  margin-top: 50px;
+  height: 65%;
+    max-width: 80%;
 }
-.email {
-  margin: 20px 0;
-}
-.password {
-  margin: 20px 0;
+.input {
+  margin: 20px;
 }
 .button {
   margin: 10px 0 20px 0;

@@ -9,11 +9,12 @@ export default function Online() {
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
-      minWidth={"45px"}
+      minWidth={"50px"}
+      maxWidth={"50px"}
       height={"20px"}
       padding={"5px"}
       borderRadius={"5px"}
-      sx={{ color: "#202020", backgroundColor: "#66F39F" }}
+      sx={{ color: "#fff", backgroundColor: "#FF0000" }}
     >
       {/* {type}online */}
       <Typography>Online</Typography>

@@ -57,10 +57,7 @@ export default function LoginCard({ title, location, time, type }) {
   };
 
   return (
-    <Grid item xs={8} className={" card"}>
-      {/* <Box>
-        <img src="" alt="Login" />
-      </Box> */}
+    <Grid item xs={8} md={4} className={"loginCard"}>
       <Box>
         <Typography variant="h5">
           Esegui l'accesso al tuo account CIO Club

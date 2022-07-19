@@ -2,6 +2,7 @@ export const ROUTES = {
   DASHBOARD: "/",
   REGISTRATION: "/registration",
   SIGN_IN: "/login",
+  EVENT: "/event",
 };
 
 // export const ROLES = {

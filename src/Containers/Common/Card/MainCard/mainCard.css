@@ -4,13 +4,13 @@
 }
 .card {
 	background-color: white;
-	min-height: 150px;
-	height: fitContent;
+	min-height: 200px;
+	max-height: 200px;
 	box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 	border-radius: 15px;
 	cursor: pointer;
     padding: 18px;
-	
+text-overflow: ellipsis;
 }
 .card-main{
 background-color: white;
@@ -20,5 +20,8 @@ background-color: white;
 	border-radius: 15px;
 	cursor: pointer;
     padding: 18px;
-	
 }
+
+/* .MuiGrid-root{
+	margin-left: 0px !important;
+} */

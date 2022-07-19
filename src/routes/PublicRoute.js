@@ -1,17 +1,20 @@
 import { Navigate, useLocation } from "react-router-dom";
 
-import { ROUTES } from "../constants";
+import { ROUTES } from "./index";
 
 export const PublicRoute = ({
   component: RouteComponent,
-  token,
   restricted = false,
 }) => {
   let location = useLocation();
-
-  if (token && restricted) {
-    return <Navigate to={ROUTES.HOME} state={{ from: location }} />;
+  const token = localStorage.getItem("token");
+  console.log("aaaa");
+  if (token) {
+    return <Navigate to={ROUTES.DASHBOARD} state={{ from: location }} />;
+  } else {
+    console.log("login");
+    // return <Navigate to={ROUTES.SIGN_IN} state={{ from: location }} />;
   }
-
+  console.log("aaaa");
   return <RouteComponent />;
 };

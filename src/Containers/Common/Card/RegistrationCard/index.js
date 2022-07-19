@@ -87,103 +87,105 @@ export default function RegistrationCard({ title, location, time, type }) {
   }, []);
 
   return (
-    <Grid item xs={8} className={"card"}>
-      {/* <Box>
-          <img src="" alt="Login" />
-        </Box> */}
+    <Grid item xs={8} md={6} className={"reg-card"}>
       <Box>
         <Typography variant="h5">Crea un account CIO Club</Typography>
       </Box>
-      <Box>
-        <Box className="nome">
-          <TextField
-            fullWidth
-            required
-            variant="outlined"
-            label="Nome"
-            value={values.utente.nome}
-            onChange={handleChange("nome")}
-          >
-            Nome
-          </TextField>
+      <Box display={"flex"}>
+        <Box>
+          <Box className="input">
+            <TextField
+              fullWidth
+              required
+              variant="outlined"
+              label="Nome"
+              value={values.utente.nome}
+              onChange={handleChange("nome")}
+            ></TextField>
+          </Box>
+          <Box className="input">
+            <TextField
+              fullWidth
+              required
+              variant="outlined"
+              label="Cognome"
+              value={values.utente.cognome}
+              onChange={handleChange("cognome")}
+            ></TextField>
+          </Box>
+          <Box className="input">
+            <TextField
+              fullWidth
+              required
+              variant="outlined"
+              label="Descrizione"
+              value={values.utente.descrizione}
+              onChange={handleChange("descrizione")}
+            >
+              Email
+            </TextField>
+          </Box>
         </Box>
-        <Box className="cognome">
-          <TextField
-            fullWidth
-            required
-            variant="outlined"
-            label="Cognome"
-            value={values.utente.cognome}
-            onChange={handleChange("cognome")}
-          >
-            Cognome
-          </TextField>
-        </Box>
-        <Box className="email">
-          <TextField
-            fullWidth
-            required
-            variant="outlined"
-            label="Email"
-            value={values.utente.email}
-            onChange={handleChange("email")}
-          >
-            Email
-          </TextField>
-        </Box>
-        <Box className="password">
-          <FormControl variant="outlined" fullWidth required>
-            <InputLabel htmlFor="outlined-adornment-password">
-              Password
-            </InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-password"
-              type={showPassword ? "text" : "password"}
-              value={values.utente.password}
-              onChange={handleChange("pwd")}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                    aria-describedby="outlined-weight-helper-text"
-                  >
-                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              label="Password *"
-            />
-          </FormControl>
-        </Box>
-        <Box className="dataNascita">
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DatePicker
-              label="Data di nascita"
-              value={values.utente.dataNascita}
-              onChange={handleChange("dataNascita")}
-              renderInput={(params) => (
-                <TextField variant="outlined" fullWidth required {...params} />
-              )}
-            />
-          </LocalizationProvider>
-        </Box>
-        <Box className="descrizione">
-          <TextField
-            fullWidth
-            required
-            variant="outlined"
-            label="Descrizione"
-            value={values.utente.descrizione}
-            onChange={handleChange("descrizione")}
-          >
-            Email
-          </TextField>
+        <Box>
+          <Box className="input">
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DatePicker
+                label="Data di nascita"
+                value={values.utente.dataNascita}
+                onChange={handleChange("dataNascita")}
+                renderInput={(params) => (
+                  <TextField
+                    variant="outlined"
+                    fullWidth
+                    required
+                    {...params}
+                  />
+                )}
+              />
+            </LocalizationProvider>
+          </Box>
+
+          <Box className="input">
+            <TextField
+              fullWidth
+              required
+              variant="outlined"
+              label="Email"
+              value={values.utente.email}
+              onChange={handleChange("email")}
+            >
+              Email
+            </TextField>
+          </Box>
+          <Box className="input">
+            <FormControl variant="outlined" fullWidth required>
+              <InputLabel htmlFor="outlined-adornment-password">
+                Password
+              </InputLabel>
+              <OutlinedInput
+                id="outlined-adornment-password"
+                type={showPassword ? "text" : "password"}
+                value={values.utente.password}
+                onChange={handleChange("pwd")}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                      aria-describedby="outlined-weight-helper-text"
+                    >
+                      {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label="Password *"
+              />
+            </FormControl>
+          </Box>
         </Box>
       </Box>
-
       <Box display={"flex"} justifyContent={"flex-end"} className={"button"}>
         <Button onClick={newRegistration} variant="contained" color={"primary"}>
           Registrati

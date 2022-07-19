@@ -26,6 +26,9 @@ export const eventSlice = createSlice({
     getEvent: (state, action) => {
       state.data = action.payload;
     },
+    sendAttend: (state, action) => {
+      state.data = action.payload;
+    },
   },
 });
 
@@ -38,6 +41,14 @@ export const getEventAsync = () => async (dispatch) => {
   }
 };
 
-export const { getEvent } = eventSlice.actions;
+export const sendAttendAsync = (i) => async (dispatch) => {
+  try {
+    const response = await api.post(`/utenti/attendEvento/${i}`);
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
+export const { getEvent, sendAttend } = eventSlice.actions;
 export const showEvent = (state) => state.event.data;
 export default eventSlice.reducer;

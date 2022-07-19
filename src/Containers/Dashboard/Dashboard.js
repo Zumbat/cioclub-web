@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-
+import "./Dashboard";
 import profile from "../../assets/svg/profile.svg";
 import { getEventAsync, showEvent } from "../../features/eventSlice";
 import {
@@ -14,6 +14,10 @@ import {
 import BasicCard from "../Common/Card/BasicCard";
 import MainCard from "../Common/Card/MainCard";
 import MediumCard from "../Common/Card/MediumCard";
+import MiniCard from "../Common/Card/MiniCard";
+import moment from "moment";
+import "./Dashboard.css";
+import { setSelectedEvent } from "../../features/selectedEventSlice";
 
 function Dashboard(params) {
   const dispatch = useDispatch();
@@ -29,17 +33,23 @@ function Dashboard(params) {
   };
   const handleLogout = () => {
     localStorage.removeItem("token");
+    console.log(localStorage.getItem("token"), "logout");
     navigate({
       pathname: "../login",
     });
   };
-  const handleDeleteAccount = () => {
-    dispatch();
-  };
 
+  // const handleEvento = (item) => {
+  //   console.log("item id", item);
+  //   dispatch(setSelectedEvent(item));
+  //   navigate({
+  //     pathname: "../event",
+  //     search: `?idEvent=${item}`,
+  //   });
+  // };
   const event = useSelector(showEvent);
   const partecipazioni = useSelector(showPartecipazioni);
-
+  console.log(event.listEventi[0].idEvento, "fdsadw");
   useEffect(() => {
     dispatch(getEventAsync());
     dispatch(getPartecipazioniAsync());
@@ -52,7 +62,7 @@ function Dashboard(params) {
   };
 
   return (
-    <Grid container spacing={2} className={"center-center"}>
+    <Grid container spacing={2} className={"center-center dash"}>
       <Grid item xs={7}>
         <Box>
           <Typography variant="h3">Dashboard</Typography>
@@ -83,9 +93,15 @@ function Dashboard(params) {
       </Grid>
       <Grid item xs={8}>
         <Grid container spacing={2} sx={{ position: "relative", zIndex: "1" }}>
-          <Grid item xs={12} sx={{ position: "relative", zIndex: "1" }}>
+          <Grid
+            item
+            xs={12}
+            sx={{ position: "relative", zIndex: "1", marginTop: "30px" }}
+          >
             <Box sx={{ color: "black" }}>
-              <Typography variant="h5">Prossimi eventi</Typography>
+              <Typography variant="h5" className={"title"}>
+                Prossimi eventi
+              </Typography>
             </Box>
             <Box
               sx={{
@@ -99,39 +115,84 @@ function Dashboard(params) {
                 title={event.listEventi[0].nome}
                 location={event.listEventi[0].indirizzo}
                 time={event.listEventi[0].data}
-                key={event.listEventi[0].idEvento}
+                id={event.listEventi[0].idEvento}
+                type={event.listEventi[0].isOnline}
+                sub={
+                  event.listEventi[0].idEvento == partecipazioni.listEventi
+                    ? true
+                    : false
+                }
+                // key={event.listEventi[0].idEvento}
               />
             </Box>
           </Grid>
           <Grid item xs={12} sx={{ position: "relative", zIndex: "5" }}>
             <Grid container spacing={2}>
-              {event.listEventi.slice(1).map((item, key) => (
-                <BasicCard
-                  title={item.nome}
-                  location={item.indirizzo}
-                  time={item.data}
-                  key={key}
-                />
-              ))}
+              {event.listEventi.slice(1).map((item, key) => {
+                if (
+                  partecipazioni.listEventi.filter(
+                    (element) => element.idEvento == item.idEvento
+                  ).length > 0
+                ) {
+                  return (
+                    <BasicCard
+                      title={item.nome}
+                      location={item.indirizzo}
+                      time={item.data}
+                      id={item.idEvento}
+                      sub={true}
+                      key={key}
+                      type={item.isOnline}
+                    />
+                  );
+                } else {
+                  return (
+                    <BasicCard
+                      title={item.nome}
+                      location={item.indirizzo}
+                      time={item.data}
+                      id={item.idEvento}
+                      sub={false}
+                      key={key}
+                      type={item.isOnline}
+                    />
+                  );
+                }
+              })}
             </Grid>
           </Grid>
           <Grid item xs={12} sx={{ position: "relative", zIndex: "10" }}>
-            <Grid
-              container
-              spacing={2}
-              sx={{ position: "relative", zIndex: "10" }}
-            >
-              <Grid item xs={12}>
-                <Typography variant={"h5"}>Partecipazioni</Typography>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sx={{ marginTop: "30px" }}>
+                <Typography variant={"h5"} className={"title"}>
+                  Partecipazioni
+                </Typography>
               </Grid>
               {partecipazioni.listEventi.map((item, key) => (
                 <MediumCard
                   title={item.nome}
                   location={item.indirizzo}
                   time={item.data}
+                  id={item.idEvento}
                   key={key}
                 />
               ))}
+            </Grid>
+          </Grid>
+          <Grid item xs={12} sx={{ position: "relative", zIndex: "15" }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sx={{ marginTop: "30px" }}>
+                <Typography variant={"h5"} className={"title"}>
+                  Archivio eventi
+                </Typography>
+              </Grid>
+              {partecipazioni.listEventi.map((item, key) => {
+                if (moment().isBefore(moment(item.data))) {
+                  return (
+                    <MiniCard title={item.nome} time={item.data} key={key} />
+                  );
+                }
+              })}
             </Grid>
           </Grid>
         </Grid>
